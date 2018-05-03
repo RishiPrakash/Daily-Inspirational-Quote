@@ -1,0 +1,21 @@
+#!/bin/bash
+
+time='date +%H%M%S'
+
+if [[ time<120000 ]]; then
+  greeting='Good Morning'
+elif [[ time<200000 ]]; then
+  greeting='Good Afternoon'
+else
+  greeting='Good Evening'
+fi
+
+echo -e "--------------------------------------------------------------------------------"
+echo "****************             ${greeting} Rishi Prakash!             *****************"
+echo -e "--------------------------------------------------------------------------------"
+
+
+curl -s  'https://quotes.rest/qod?category=inspire' | \
+ jq '.contents.quotes[0].quote','.contents.quotes[0].author'
+
+#https://talaikis.com/api/quotes/random/ 
